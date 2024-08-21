@@ -1,0 +1,44 @@
+Started by user admin
+Running as SYSTEM
+Building remotely on ProductionMachine in workspace /home/ubuntu/jenkikns/workspace/Project3
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /home/ubuntu/jenkikns/workspace/Project3/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/iamrashmisagar/website20aug.git # timeout=10
+Fetching upstream changes from https://github.com/iamrashmisagar/website20aug.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/iamrashmisagar/website20aug.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision d2d7349afb6b61262ab26e43b0244adec0198d0e (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f d2d7349afb6b61262ab26e43b0244adec0198d0e # timeout=10
+Commit message: "Added Dockerfile"
+ > git rev-list --no-walk d2d7349afb6b61262ab26e43b0244adec0198d0e # timeout=10
+[Project3] $ /bin/sh -xe /tmp/jenkins14271927465685569679.sh
++ sudo docker build . -t finalimage
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  270.3kB
+Step 1/5 : FROM ubuntu
+ ---> edbfe74c41f8
+Step 2/5 : RUN apt-get update
+ ---> Using cache
+ ---> 8e0c409fb3b2
+Step 3/5 : RUN apt-get install apache2 -y
+ ---> Using cache
+ ---> 0e2592215098
+Step 4/5 : ADD . /var/www/html
+ ---> Using cache
+ ---> 7bf3cb2d6431
+Step 5/5 : ENTRYPOINT apachectl -D FOREGROUND
+ ---> Using cache
+ ---> a1f2d023294e
+Successfully built a1f2d023294e
+Successfully tagged finalimage:latest
++ sudo docker run -itd --name finalcontainer -p 80:80 finalimage
+c5455f8df9b6efe6ee1e5ba7ae5e8c524b7cf01394a071a5297409f8bdb6c116
+Finished: SUCCESS

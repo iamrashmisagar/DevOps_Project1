@@ -1,0 +1,46 @@
+Started by GitHub push by iamrashmisagar
+Running as SYSTEM
+Building remotely on TestingMachine in workspace /home/ubuntu/jenkikns/workspace/Project2
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/iamrashmisagar/website20aug.git
+ > git init /home/ubuntu/jenkikns/workspace/Project2 # timeout=10
+Fetching upstream changes from https://github.com/iamrashmisagar/website20aug.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/iamrashmisagar/website20aug.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/iamrashmisagar/website20aug.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision d2d7349afb6b61262ab26e43b0244adec0198d0e (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f d2d7349afb6b61262ab26e43b0244adec0198d0e # timeout=10
+Commit message: "Added Dockerfile"
+First time build. Skipping changelog.
+[Project2] $ /bin/sh -xe /tmp/jenkins1253423039701583016.sh
++ sudo docker build . -t testingmasterimage
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  270.3kB
+Step 1/5 : FROM ubuntu
+ ---> edbfe74c41f8
+Step 2/5 : RUN apt-get update
+ ---> Using cache
+ ---> 0ffc45061bac
+Step 3/5 : RUN apt-get install apache2 -y
+ ---> Using cache
+ ---> e3a6f27f9efd
+Step 4/5 : ADD . /var/www/html
+ ---> ec7783ce4aee
+Step 5/5 : ENTRYPOINT apachectl -D FOREGROUND
+ ---> Running in b674d41956bd
+Removing intermediate container b674d41956bd
+ ---> 52fc543193d5
+Successfully built 52fc543193d5
+Successfully tagged testingmasterimage:latest
+Triggering a new build of Project3
+Finished: SUCCESS
